@@ -1,6 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Chat.css';
 import langflowClient from './services/LangflowService';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const Chat = () => {
     const [messages, setMessages] = useState([
@@ -8,6 +12,10 @@ const Chat = () => {
     ]);
     const [inputMessage, setInputMessage] = useState('');
     const messagesEndRef = useRef(null);
+    const [userProfile] = useState(() => {
+        const savedProfile = localStorage.getItem('userProfile');
+        return savedProfile ? JSON.parse(savedProfile) : null;
+    });
 
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -48,7 +56,10 @@ const Chat = () => {
                 inputMessage,
                 'chat',
                 'chat',
-                tweaks,
+                {
+                    uid: userProfile?.uid || 'unknown', // Add uid here
+                    tweaks,
+                },
                 true,
                 (data) => {
                     if (data.chunk) {
@@ -111,7 +122,34 @@ const Chat = () => {
                             className={`message-wrapper ${message.sender}-wrapper`}
                         >
                             <div className={`message ${message.sender}-message`}>
-                                {message.text}
+                                {message.sender === 'bot' ? (
+                                    <ReactMarkdown
+                                        remarkPlugins={[remarkGfm]}
+                                        components={{
+                                            code({node, inline, className, children, ...props}) {
+                                                const match = /language-(\w+)/.exec(className || '');
+                                                return !inline && match ? (
+                                                    <SyntaxHighlighter
+                                                        style={vscDarkPlus}
+                                                        language={match[1]}
+                                                        PreTag="div"
+                                                        {...props}
+                                                    >
+                                                        {String(children).replace(/\n$/, '')}
+                                                    </SyntaxHighlighter>
+                                                ) : (
+                                                    <code className={className} {...props}>
+                                                        {children}
+                                                    </code>
+                                                );
+                                            }
+                                        }}
+                                    >
+                                        {message.text}
+                                    </ReactMarkdown>
+                                ) : (
+                                    message.text
+                                )}
                             </div>
                         </div>
                     ))}

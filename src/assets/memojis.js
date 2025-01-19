@@ -24,44 +24,6 @@ export const memojis = [
     {
         id: 2,
         config: genConfig({
-            sex: "woman",
-            faceColor: "#AC6651",
-            earSize: "big",
-            eyeStyle: "oval",
-            noseStyle: "round",
-            mouthStyle: "surprised",
-            shirtStyle: "short",
-            glassesStyle: "round",
-            hairColor: "#77311D",
-            hairStyle: "womanLong",
-            hatStyle: "none",
-            shirtColor: "#9287FF"
-        }),
-        alt: 'Surprised Avatar',
-        label: 'Surprised\nAvatar'
-    },
-    {
-        id: 3,
-        config: genConfig({
-            sex: "man",
-            faceColor: "#F9C9B6",
-            earSize: "small",
-            eyeStyle: "smile",
-            noseStyle: "long",
-            mouthStyle: "laugh",
-            shirtStyle: "polo",
-            glassesStyle: "square",
-            hairColor: "#FC909F",
-            hairStyle: "thick",
-            hatStyle: "none",
-            shirtColor: "#FF0000"
-        }),
-        alt: 'Excited Avatar',
-        label: 'Excited\nAvatar'
-    },
-    {
-        id: 4,
-        config: genConfig({
             sex: "man",
             faceColor: "#AC6651",
             earSize: "small",
@@ -79,7 +41,7 @@ export const memojis = [
         label: 'Chill\nAvatar'
     },
     {
-        id: 5,
+        id: 3,
         config: genConfig({
             sex: "woman",
             faceColor: "#F9C9B6",

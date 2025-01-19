@@ -70,6 +70,64 @@
     color: white;
     border-bottom-left-radius: 4px;
     backdrop-filter: blur(10px);
+    text-align: left;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.bot-message p {
+    margin: 0.5em 0;
+}
+
+.bot-message code {
+    background-color: #2d2d2d;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+.bot-message pre {
+    margin: 1em 0;
+    border-radius: 5px;
+    overflow: auto;
+}
+
+.bot-message blockquote {
+    border-left: 4px solid #555;
+    margin: 0;
+    padding-left: 1em;
+    color: #888;
+}
+
+.bot-message ul, .bot-message ol {
+    margin: 0.5em 0;
+    padding-left: 2em;
+}
+
+.bot-message table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: 100%;
+}
+
+.bot-message th, .bot-message td {
+    border: 1px solid #444;
+    padding: 0.5em;
+    text-align: left;
+}
+
+.bot-message th {
+    background-color: #2d2d2d;
+}
+
+.bot-message a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+.bot-message a:hover {
+    text-decoration: underline;
 }
 
 .chat-input-form {

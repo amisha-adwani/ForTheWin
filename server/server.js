@@ -27,6 +27,7 @@ app.post('/api/profile', async (req, res) => {
             name, 
             dob, 
             dobTime, 
+            uid,
             city, 
             state,
             country,
@@ -46,7 +47,8 @@ app.post('/api/profile', async (req, res) => {
             gender,
             latitude,
             longitude,
-            planetData,  // Store planet data in database
+            planetData,
+            uid,  
             createdAt: new Date().toISOString()
         };
 

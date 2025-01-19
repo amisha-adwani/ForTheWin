@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './profile.css';
 import { memojis } from './assets/memojis';
 import Avatar from 'react-nice-avatar';
@@ -19,7 +20,7 @@ const Profile = () => {
             gender: '',
             latitude: '',
             longitude: '',
-            selectedMemoji: ''
+            uid: '',
         };
     });
 
@@ -36,10 +37,7 @@ const Profile = () => {
     };
 
     const handleMemojiSelect = (memojiId) => {
-        setProfile(prev => ({
-            ...prev,
-            selectedMemoji: memojiId
-        }));
+       
     };
     const handleCityChange = (e) => {
         const cityName = e.target.value;
@@ -80,8 +78,15 @@ const Profile = () => {
         e.preventDefault();
         if(profile.latitude && profile.longitude) {
             try {
+                // Generate UUID for the profile
+                const profileId = uuidv4();
+
                 // First, save to localStorage
-                localStorage.setItem('userProfile', JSON.stringify(profile));
+                const profileWithId = {
+                    ...profile,
+                    uid: profileId
+                };
+                localStorage.setItem('userProfile', JSON.stringify(profileWithId));
 
                 // Prepare data for astrology API
                 const [year, month, day] = profile.dob.split('-');
@@ -118,7 +123,12 @@ const Profile = () => {
                 }
 
                 const planetData = await planetResponse.json();
-                console.log('Planet data:', planetData);
+                
+                // Extract only the output arrays
+                const relevantPlanetData = {
+                    output: planetData.output || [],
+                    debug: planetData.debug || []
+                };
 
                 // Now send everything to backend
                 const response = await fetch('http://localhost:5000/api/profile', {
@@ -127,6 +137,7 @@ const Profile = () => {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
+                        uid: profileId,  // Include the UUID
                         name: profile.name,
                         dob: profile.dob,
                         dobTime: profile.dobTime,
@@ -136,7 +147,7 @@ const Profile = () => {
                         gender: profile.gender,
                         latitude: profile.latitude,
                         longitude: profile.longitude,
-                        planetData: planetData.output // Include planet data
+                        planetData: relevantPlanetData
                     }),
                     credentials: 'include'
                 });
