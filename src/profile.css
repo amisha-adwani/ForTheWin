@@ -1,0 +1,300 @@
+.profile-container {
+    height: calc(100vh - 60px);
+    padding: 20px;
+    color: white;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-card {
+    width: 100%;
+    max-width: 500px;
+    background-color: rgba(26, 26, 26, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+}
+
+.profile-form {
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-input {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+/* Update input styles */
+.form-input {
+    width: 100%;
+    padding: 16px;
+    background-color: rgba(51, 51, 51, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+/* Style date and time inputs */
+input[type="date"],
+input[type="time"] {
+    position: relative;
+    color: white;
+}
+
+input[type="date"]::before {
+    content: 'Date of Birth';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
+
+input[type="time"]::before {
+    content: 'Time of Birth';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none;
+}
+
+input[type="date"]:valid::before,
+input[type="time"]:valid::before {
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    position: absolute;
+    right: 16px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    color: #888;
+    filter: invert(0.7);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    background-color: rgba(51, 51, 51, 0.3);
+    padding: 20px;
+    border-radius: 16px;
+}
+
+.memoji-selector {
+    display: flex;
+    gap: 15px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 5px;
+}
+
+.memoji-grid {
+    display: none;
+}
+
+.memoji-item {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    background-color: rgba(51, 51, 51, 0.7);
+    flex-shrink: 0;
+}
+
+.memoji-item.selected {
+    border-color: #0084ff;
+    background-color: rgba(0, 132, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.avatar-container {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.name-input {
+    flex: 1;
+    padding: 12px 16px;
+    background-color: rgba(51, 51, 51, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.name-input:focus {
+    outline: none;
+    border-color: #0084ff;
+    background-color: rgba(51, 51, 51, 0.9);
+    box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.2);
+}
+
+.name-input::placeholder {
+    color: #666;
+}
+
+/* Hide scrollbar for memoji selector */
+.memoji-selector::-webkit-scrollbar {
+    display: none;
+}
+
+.memoji-selector {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.memoji-label {
+    color: #888;
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.memoji-item:hover {
+    transform: scale(1.05);
+    background-color: rgba(51, 51, 51, 0.9);
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px;
+    background-color: rgba(51, 51, 51, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #0084ff;
+    background-color: rgba(51, 51, 51, 0.5);
+    box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.2);
+}
+
+.form-input::placeholder {
+    color: #888;
+}
+
+/* Style the date and time input placeholders */
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="time"]::-webkit-datetime-edit-hour-field,
+input[type="time"]::-webkit-datetime-edit-minute-field,
+input[type="time"]::-webkit-datetime-edit-ampm-field {
+    color: #888;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
+}
+
+.save-button {
+    width: 100%;
+    padding: 14px;
+    background-color: #0084ff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.save-button:hover {
+    background-color: #0073e6;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 132, 255, 0.3);
+}
+
+.save-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+/* Add smooth scrollbar styling */
+.profile-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.profile-container::-webkit-scrollbar-track {
+    background: rgba(26, 26, 26, 0.5);
+    border-radius: 4px;
+}
+
+.profile-container::-webkit-scrollbar-thumb {
+    background: rgba(51, 51, 51, 0.8);
+    border-radius: 4px;
+}
+
+.profile-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(51, 51, 51, 1);
+}
+
+.gender-selector {
+    margin-bottom: 20px;
+}
+
+.gender-selector select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+}
+
+.gender-selector select option {
+    background-color: rgba(26, 26, 26, 0.95);
+    color: white;
+}
+
+/* Ensure the select element matches other inputs */
+.gender-selector .form-input {
+    margin-bottom: 0;
+} 
