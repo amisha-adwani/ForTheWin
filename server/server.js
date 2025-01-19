@@ -52,10 +52,8 @@ app.post('/api/profile', async (req, res) => {
             createdAt: new Date().toISOString()
         };
 
-        console.log('Attempting to save profile:', profile);
 
         const result = await db.collection('soul').insertOne(profile);
-        console.log('Profile saved to database:', result);
         res.status(201).json(result);
     } catch (error) {
         console.error('Error creating profile:', error);

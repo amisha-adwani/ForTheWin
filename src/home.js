@@ -4,6 +4,7 @@ const Home = () => {
     const [birthChart, setBirthChart] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [name, setName] = useState(null);
 
     useEffect(() => {
         const fetchBirthChart = async () => {
@@ -17,7 +18,7 @@ const Home = () => {
                 }
 
                 const profile = JSON.parse(savedProfile);
-                
+                setName(profile.name);
                 // Extract date and time
                 const [year, month, day] = profile.dob.split('-');
                 const [hours, minutes] = profile.dobTime.split(':');
@@ -46,7 +47,7 @@ const Home = () => {
             "native_name":"Mr. Ram Charan",
             "native_name_font_size": "15px",
             "native_details_font_size":"15px",
-            "chart_border_width":1,
+            "chart_border_width":6,
             "planet_name_font_size": "15px",
             "chart_heading_font_size":"15px",            
             "chart_background_color":"#FFFFFF",            
@@ -128,7 +129,7 @@ const Home = () => {
             padding: '20px',
             overflowY: 'auto'
         }}>
-            <h1>Your Birth Chart</h1>
+            <h1> {name}'s Birth Chart </h1>
             {birthChart && (
                 <div className="birth-chart-data">
                     <img src={birthChart.output} alt="Birth Chart" />

@@ -48,7 +48,6 @@ const Profile = () => {
             city.name.toLowerCase() === cityName.toLowerCase()
         );
 
-        console.log('Selected city data:', cityData); // Debug log
 
         setProfile(prev => ({
             ...prev,
@@ -157,7 +156,6 @@ const Profile = () => {
                 }
 
                 const result = await response.json();
-                console.log('Profile created successfully:', result);
                 alert('Profile saved successfully!');
 
             } catch (error) {

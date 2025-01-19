@@ -5,7 +5,10 @@ import Home from './home';
 import Profile from './profile';
 import { HomeIcon, ChatIcon, ProfileIcon } from './Icons';
 import './App.css';
-import bgImage from './assets/bg2.jpg';
+import bgImage from './assets/bg4.png';
+import home from './assets/home.png';
+import home2 from './assets/home2.png';
+
 
 function App() {
   return (
@@ -25,25 +28,33 @@ function App() {
         </Routes>
         
         <nav className="bottom-nav">
-          <NavLink to="/" className={({ isActive }) => 
-            `nav-item ${isActive ? 'active' : ''}`
-          }>
-            <HomeIcon />
-            <span>Home</span>
-          </NavLink>
-          <NavLink to="/chat" className={({ isActive }) => 
-            `nav-item ${isActive ? 'active' : ''}`
-          }>
-            <ChatIcon />
-            <span>Chat</span>
-          </NavLink>
-          <NavLink to="/profile" className={({ isActive }) => 
-            `nav-item ${isActive ? 'active' : ''}`
-          }>
-            <ProfileIcon />
-            <span>Profile</span>
-          </NavLink>
-        </nav>
+  <NavLink
+    to="/"
+    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+  >
+    {({ isActive }) => (
+      <>
+        <img src={isActive ? home : home2} alt="Home" />
+        <span>Home</span>
+      </>
+    )}
+  </NavLink>
+  <NavLink
+    to="/chat"
+    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+  >
+    <ChatIcon />
+    <span>Chat</span>
+  </NavLink>
+  <NavLink
+    to="/profile"
+    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+  >
+    <ProfileIcon />
+    <span>Profile</span>
+  </NavLink>
+</nav>
+
       </div>
     </Router>
   );
