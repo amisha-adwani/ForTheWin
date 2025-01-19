@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://forthewin-1.onrender.com',
     credentials: true,
     methods: ['GET', 'POST', 'OPTIONS']
 }));
@@ -148,7 +148,6 @@ app.post('/api/chat', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`Test the server: http://localhost:${PORT}/api/test`);
 });
 
 // Error handling
