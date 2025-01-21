@@ -1,7 +1,7 @@
 // Create a new service file to handle Langflow interactions
 export class LangflowClient {
     constructor() {
-        this.baseURL = 'http://localhost:5000/api';
+        this.baseURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000/api';
     }
 
     async testConnection() {
